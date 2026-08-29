@@ -1,0 +1,9 @@
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
+data/
+*.nc
+*.grib
+*.zip
+.env
+_to_delete/

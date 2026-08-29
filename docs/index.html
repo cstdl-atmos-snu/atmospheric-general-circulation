@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atmospheric General Circulation — SNU</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0B1F3A;--ink:#1B2A41;--teal:#1C7293;--teal-lt:#E3F0F4;--amber:#E8A33D;--mist:#F4F6F8;--grey:#6B7A8C;--sand:#FBEFD9;
+ --hf:Cambria,"Source Serif 4",Georgia,serif;--bf:Calibri,"Source Sans 3","Segoe UI","Helvetica Neue",Arial,sans-serif;}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--bf);color:var(--ink);background:#fff;line-height:1.5}
+a{color:var(--teal)} a:hover{color:var(--navy)}
+header{background:var(--navy);color:#fff;position:relative;overflow:hidden;padding:64px 0 56px}
+header .motif,header .motif::after{position:absolute;border-radius:50%;border:1.25px solid var(--teal);pointer-events:none}
+header .motif{right:-260px;top:-300px;width:560px;height:560px}
+header .motif::after{content:"";left:64px;top:64px;width:430px;height:430px}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px;position:relative}
+.kicker{font-size:12px;font-weight:700;letter-spacing:3px;color:var(--amber);text-transform:uppercase}
+h1{font-family:var(--hf);font-size:40px;line-height:1.15;margin:8px 0 12px}
+header p{margin:0 0 6px;color:#CADCFC;font-size:17px;max-width:720px}
+header .meta{font-size:14px;color:#8FA3BF;margin-top:18px}
+header .meta b{color:#fff;font-weight:600}
+main{padding:40px 0 60px}
+h2{font-family:var(--hf);font-size:26px;color:var(--navy);margin:36px 0 14px}
+h2:first-child{margin-top:0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:var(--mist);border-radius:10px;padding:18px 20px}
+.card.teal{background:var(--teal-lt)} .card.sand{background:var(--sand)}
+.card h3{margin:0 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:0;font-size:14px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{text-align:left;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);padding:8px 10px;border-bottom:2px solid var(--teal-lt)}
+td{padding:12px 10px;border-bottom:1px solid var(--teal-lt);vertical-align:top}
+td.wk{font-family:var(--hf);font-weight:700;color:var(--navy);white-space:nowrap;width:70px}
+td .ch{color:var(--grey);font-size:13px}
+.pill{display:inline-block;background:var(--teal-lt);color:var(--navy);border-radius:999px;padding:3px 12px;font-size:13px;margin:2px 6px 2px 0;text-decoration:none;font-weight:600}
+.pill:hover{background:var(--teal);color:#fff}
+.pill.soon{background:#eee;color:var(--grey);font-weight:400}
+code{background:var(--mist);padding:1px 6px;border-radius:4px;font-size:13px}
+pre{background:var(--navy);color:#e8eef5;padding:14px 16px;border-radius:8px;font-size:13px;overflow-x:auto}
+footer{border-top:1px solid var(--teal-lt);padding:20px 0 40px;font-size:13px;color:var(--grey)}
+</style>
+</head>
+<body>
+<header>
+  <div class="motif"></div>
+  <div class="wrap">
+    <div class="kicker">Graduate course · Fall 2026 · Seoul National University</div>
+    <h1>Atmospheric General Circulation</h1>
+    <p>Lecture slides and hands-on analysis notebooks for the course, following <i>The Atmospheric General Circulation</i> by Wallace, Battisti, Thompson &amp; Hartmann (Cambridge University Press).</p>
+    <div class="meta"><b>Instructor:</b> [your name] &nbsp;·&nbsp; <b>Repository:</b> <a href="https://github.com/cstdl-atmos-snu/atmospheric-general-circulation" style="color:#CADCFC">github.com/cstdl-atmos-snu/atmospheric-general-circulation</a></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <h2>How this site works</h2>
+  <div class="cards">
+    <div class="card teal">
+      <h3>Slides</h3>
+      <p>Each lecture's slides open in the browser (reveal.js). Use <b>→ / ←</b> or <b>Space</b> to move, <b>F</b> for full screen, <b>Esc</b> for an overview, <b>?</b> for all shortcuts.</p>
+    </div>
+    <div class="card">
+      <h3>Notebooks</h3>
+      <p>Jupyter notebooks let you reproduce and explore what we discuss in class. Click <b>Open in Colab</b> to run one in your browser with nothing to install, or run them locally (see below).</p>
+    </div>
+    <div class="card sand">
+      <h3>Exercises</h3>
+      <p>Most notebooks end with a few open-ended questions in the spirit of the textbook's asterisked exercises. Bring your results and questions to the next class.</p>
+    </div>
+  </div>
+
+  <h2>Schedule</h2>
+  <table>
+    <thead><tr><th>Week</th><th>Topic</th><th>Materials</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="wk">0</td>
+        <td>Introduction: what the general circulation is, and how the textbook is organized<br><span class="ch">Preface</span></td>
+        <td><a class="pill" href="slides/00-intro.html">Slides</a></td>
+      </tr>
+      <tr>
+        <td class="wk">1</td>
+        <td>The observing system and the building blocks of the general circulation<br><span class="ch">Chapter 1 · Appendix A</span></td>
+        <td><span class="pill soon">Slides (coming)</span> <a class="pill" href="https://colab.research.google.com/github/cstdl-atmos-snu/atmospheric-general-circulation/blob/main/notebooks/01-zonal-mean-climatology.ipynb">Notebook 01 · Open in Colab</a></td>
+      </tr>
+      <tr>
+        <td class="wk">2</td>
+        <td>Thought experiments: heating, friction, rotation, and the heat engine<br><span class="ch">Chapter 2</span></td>
+        <td><span class="pill soon">Slides (coming)</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Running the notebooks on your own computer</h2>
+  <p>If you prefer a local setup, install <a href="https://github.com/conda-forge/miniforge">Miniforge</a> and create the course environment once:</p>
+<pre>git clone https://github.com/cstdl-atmos-snu/atmospheric-general-circulation.git
+cd atmospheric-general-circulation
+conda env create -f environment.yml
+conda activate agc
+jupyter lab</pre>
+  <p>The notebooks read reanalysis data directly from public servers (NOAA PSL OPeNDAP), so no data download is needed for the early weeks.</p>
+</main>
+
+<footer class="wrap">
+  Atmospheric General Circulation · Seoul National University · Source on <a href="https://github.com/cstdl-atmos-snu/atmospheric-general-circulation">GitHub</a>
+</footer>
+</body>
+</html>

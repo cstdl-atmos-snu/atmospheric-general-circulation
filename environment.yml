@@ -1,0 +1,17 @@
+name: agc
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - numpy
+  - scipy
+  - pandas
+  - xarray
+  - netcdf4
+  - dask
+  - matplotlib
+  - cartopy
+  - cmocean
+  - jupyterlab
+  - ipywidgets
+  - pip
