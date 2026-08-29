@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intro — The Atmospheric General Circulation</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/white.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0B1F3A;--ink:#1B2A41;--teal:#1C7293;--teal-lt:#E3F0F4;--amber:#E8A33D;--mist:#F4F6F8;--grey:#6B7A8C;--sand:#FBEFD9;
+ --hf:Cambria,"Source Serif 4",Georgia,serif;--bf:Calibri,"Source Sans 3","Segoe UI","Helvetica Neue",Arial,sans-serif;}
+.reveal{font-family:var(--bf);font-size:20.4px;color:var(--ink);}
+.reveal .slides section{text-align:left;padding:0;width:960px;height:540px;box-sizing:border-box;overflow:hidden;}
+.reveal .slides section.light{background:#fff;padding:32px 48px 26px 48px;}
+.reveal .slides section.dark{background:var(--navy);color:#fff;padding:0 68px;display:flex !important;flex-direction:column;justify-content:center;}
+.reveal h1,.reveal h2,.reveal h3{font-family:var(--hf);text-transform:none;letter-spacing:0;margin:0;}
+.reveal h1{font-size:48px;font-weight:700;line-height:1.15;color:#fff;margin:6px 0 10px;}
+.reveal h1.h1-sm{font-size:36px;}
+.reveal h2{font-size:30px;font-weight:700;line-height:1.2;color:var(--navy);margin:2px 0 14px;max-width:840px;}
+.reveal h3{font-family:var(--bf);font-size:17.4px;font-weight:700;color:var(--teal);margin:8px 0 4px;}
+.reveal p{margin:0 0 8px;line-height:1.35;}
+.reveal .kicker{font-family:var(--bf);font-size:13.8px;font-weight:700;letter-spacing:2.5px;color:var(--teal);}
+.reveal .kicker.amber{color:var(--amber);letter-spacing:3px;}
+.reveal .amber{color:var(--amber);} .reveal .teal{color:var(--teal);} .reveal .muted{color:#8FA3BF;}
+.reveal .small{font-size:14.4px;line-height:1.35;} .reveal .lead{font-size:16.2px;line-height:1.4;margin-bottom:12px;}
+.reveal ul,.reveal ol{margin:0 0 0 18px;padding:0;display:block;}
+.reveal ul li{font-size:15px;line-height:1.3;margin:0 0 5px;}
+.reveal ul.lg li{font-size:16.8px;margin-bottom:7px;} .reveal ul.sm li{font-size:13.8px;}
+/* motif */
+.motif,.motif-bl{position:absolute;border-radius:50%;pointer-events:none;}
+.motif{right:-300px;top:-250px;width:500px;height:500px;z-index:-1;border:2px solid var(--teal-lt);}
+.motif::after{content:"";position:absolute;left:58px;top:58px;width:384px;height:384px;border:1px solid var(--teal-lt);border-radius:50%;}
+.dark .motif{border-color:var(--teal);border-width:1.25px;opacity:.9;} .dark .motif::after{border-color:var(--teal);}
+.motif-bl{left:-210px;bottom:-230px;width:480px;height:480px;border:1px solid var(--teal);z-index:-1;}
+/* footer */
+.foot{position:absolute;left:48px;right:48px;bottom:10px;display:flex;justify-content:space-between;font-size:10.8px;color:var(--grey);}
+/* icons */
+.icircle{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#fff;flex:none;}
+.icircle.teal{background:var(--teal-lt);} .icircle .ic{width:20px;height:20px;color:var(--teal);}
+.ic.amber{color:var(--amber);width:30px;height:30px;flex:none;}
+/* cards */
+.card{border-radius:8px;padding:16px 18px;box-sizing:border-box;}
+.card.teal{background:var(--teal-lt);} .card.mist{background:var(--mist);} .card.sand{background:var(--sand);}
+.card-head{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--navy);font-size:16.2px;margin-bottom:10px;}
+.card-body{font-size:14.4px;} .card-body p{margin-bottom:9px;}
+.card.strip{display:flex;gap:14px;align-items:center;font-size:13.8px;line-height:1.35;margin-top:14px;}
+.card.strip.sm{font-size:12.6px;padding:10px 14px;margin-top:0;}
+/* columns */
+.cols{display:flex;gap:26px;align-items:stretch;}
+.col-main{flex:1;min-width:0;display:flex;flex-direction:column;}
+.card.key{width:300px;flex:none;} .card.key.wide{width:400px;}
+.cols.part .col-main h3:first-child{margin-top:0;}
+.bottom{margin-top:auto;padding-top:8px;}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+/* scale bar */
+.scalebar{position:relative;display:flex;justify-content:space-between;margin:64px 30px 24px 30px;height:130px;}
+.scalebar .axis{position:absolute;left:0;right:0;top:50%;height:2px;background:var(--teal);}
+.scalebar .tick{position:relative;width:160px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;}
+.scalebar .lab{position:absolute;top:-38px;font-weight:700;font-size:15.6px;color:var(--navy);white-space:nowrap;}
+.scalebar .dot{border-radius:50%;background:var(--amber);border:2px solid #fff;box-sizing:content-box;}
+.scalebar .sub{position:absolute;top:calc(50% + 42px);font-size:12.6px;color:var(--grey);line-height:1.3;}
+.scalebar .axis-lab{position:absolute;right:-30px;top:calc(50% + 6px);font-size:10.8px;color:var(--teal);font-style:italic;}
+.chips{display:flex;align-items:center;gap:16px;margin-top:22px;} .chips-lab{font-weight:700;font-size:14.4px;color:var(--navy);}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--teal-lt);border-radius:8px;padding:5px 12px 5px 6px;font-size:14.4px;color:var(--navy);}
+/* timeline */
+.timeline{position:relative;display:flex;justify-content:space-between;margin:30px 20px 0;}
+.timeline .axis{position:absolute;left:0;right:0;top:56px;height:3px;background:var(--teal-lt);}
+.timeline .node{position:relative;width:190px;text-align:center;}
+.timeline .yr{font-family:var(--hf);font-weight:700;font-size:19.2px;color:var(--navy);height:44px;}
+.timeline .dot{width:26px;height:26px;border-radius:50%;background:var(--amber);border:2px solid #fff;margin:0 auto 12px;box-sizing:border-box;}
+.timeline .txt{font-size:13.2px;line-height:1.35;}
+/* roadmap */
+.roadmap .pcard{border-radius:8px;padding:12px 14px;min-height:130px;}
+.pcard.z{background:var(--teal-lt);} .pcard.v{background:var(--sand);}
+.pcard .row{display:flex;justify-content:space-between;font-size:13.2px;} .pcard .pn{font-weight:700;letter-spacing:1px;color:var(--teal);} .pcard.v .pn{color:#B8771A;} .pcard .ch{color:var(--grey);}
+.pcard .pt{font-family:var(--hf);font-weight:700;font-size:17.4px;color:var(--navy);margin:6px 0 6px;line-height:1.2;}
+.pcard .pd{font-size:12.6px;line-height:1.3;}
+.legend{display:flex;gap:40px;font-size:12px;margin-top:14px;} .legend span{display:flex;align-items:center;gap:8px;}
+.sw{display:inline-block;width:20px;height:14px;border-radius:2px;} .sw.z{background:var(--teal-lt);} .sw.v{background:var(--sand);}
+/* use */
+.use{margin-bottom:22px;} .use-item{display:flex;gap:12px;align-items:flex-start;} .ut{font-weight:700;font-size:16.2px;color:var(--navy);margin-bottom:3px;} .ub{font-size:13.2px;line-height:1.35;}
+/* names */
+.names{display:flex;flex-wrap:wrap;gap:10px;margin:4px 0 12px;} .name{background:var(--teal-lt);border-radius:8px;padding:7px 16px;font-size:14.4px;color:var(--navy);}
+/* title & closing */
+.title-block{position:relative;}
+.sub{font-size:21.6px;color:#CADCFC;margin-bottom:34px;} .textbook{font-size:15.6px;margin-bottom:6px;} .muted{font-size:14.4px;}
+.globe{position:absolute;right:70px;bottom:50px;opacity:.7;} .globe .ic{width:60px;height:60px;color:#fff;}
+.qs{list-style:none;margin:22px 0 0;padding:0;} .qs li{display:flex;gap:16px;align-items:center;font-size:18px;color:#fff;margin-bottom:14px;line-height:1.3;}
+.qs .num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--amber);color:var(--navy);font-family:var(--hf);font-weight:700;font-size:18px;flex:none;}
+.card.next{background:#132B4D;display:flex;gap:16px;align-items:center;font-size:15.6px;color:#fff;margin-top:22px;line-height:1.35;}
+.reveal .progress{color:var(--amber);} .reveal .controls{color:var(--teal);}
+</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+<section class="dark">
+  <div class="motif"></div><div class="motif-bl"></div>
+  
+  <div class="title-block">
+    <div class="kicker amber">GRADUATE COURSE &nbsp;·&nbsp; ATMOSPHERIC GENERAL CIRCULATION</div>
+    <h1>The Atmospheric General Circulation</h1>
+    <p class="sub">Introduction — what this course is about, and how the textbook is organized</p>
+    <p class="textbook"><b class="amber">Textbook:</b> J. M. Wallace, D. S. Battisti, D. W. J. Thompson &amp; D. L. Hartmann, <i>The Atmospheric General Circulation</i> (Cambridge University Press)</p>
+    <p class="muted"><i>Based on the book's Preface</i></p>
+  </div>
+  <div class="globe"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm82.29 357.6c-3.9 3.88-7.99 7.95-11.31 11.28-2.99 3-5.1 6.7-6.17 10.71-1.51 5.66-2.73 11.38-4.77 16.87l-17.39 46.85c-13.76 3-28 4.69-42.65 4.69v-27.38c1.69-12.62-7.64-36.26-22.63-51.25-6-6-9.37-14.14-9.37-22.63v-32.01c0-11.64-6.27-22.34-16.46-27.97-14.37-7.95-34.81-19.06-48.81-26.11-11.48-5.78-22.1-13.14-31.65-21.75l-.8-.72a114.792 114.792 0 0 1-18.06-20.74c-9.38-13.77-24.66-36.42-34.59-51.14 20.47-45.5 57.36-82.04 103.2-101.89l24.01 12.01C203.48 89.74 216 82.01 216 70.11v-11.3c7.99-1.29 16.12-2.11 24.39-2.42l28.3 28.3c6.25 6.25 6.25 16.38 0 22.63L264 112l-10.34 10.34c-3.12 3.12-3.12 8.19 0 11.31l4.69 4.69c3.12 3.12 3.12 8.19 0 11.31l-8 8a8.008 8.008 0 0 1-5.66 2.34h-8.99c-2.08 0-4.08.81-5.58 2.27l-9.92 9.65a8.008 8.008 0 0 0-1.58 9.31l15.59 31.19c2.66 5.32-1.21 11.58-7.15 11.58h-5.64c-1.93 0-3.79-.7-5.24-1.96l-9.28-8.06a16.017 16.017 0 0 0-15.55-3.1l-31.17 10.39a11.95 11.95 0 0 0-8.17 11.34c0 4.53 2.56 8.66 6.61 10.69l11.08 5.54c9.41 4.71 19.79 7.16 30.31 7.16s22.59 27.29 32 32h66.75c8.49 0 16.62 3.37 22.63 9.37l13.69 13.69a30.503 30.503 0 0 1 8.93 21.57 46.536 46.536 0 0 1-13.72 32.98zM417 274.25c-5.79-1.45-10.84-5-14.15-9.97l-17.98-26.97a23.97 23.97 0 0 1 0-26.62l19.59-29.38c2.32-3.47 5.5-6.29 9.24-8.15l12.98-6.49C440.2 193.59 448 223.87 448 256c0 8.67-.74 17.16-1.82 25.54L417 274.25z"></path></svg></div>
+  <aside class="notes">Lecture 0 / Intro. Goal: give students the big picture of what 'general circulation' means, where the textbook came from, and the roadmap of the six parts. Source: Preface of Wallace et al.</aside>
+</section>
+
+<section class="light ">
+  <div class="motif"></div>
+  <div class="kicker">WHY “GENERAL CIRCULATION”?</div>
+  <h2>Understanding the macroscopic behavior of the global circulation</h2>
+  
+  <div class="cols">
+    <div class="col-main">
+      <h3>The global circulation, viewed macroscopically</h3>
+      <ul class="lg"><li>Its structure and evolution</li><li>How it mixes and disperses trace constituents</li><li>How it mediates radiative transfer, cloud microphysics, and microscale turbulence</li><li>How it interacts with the oceans, the biosphere, and the cryosphere</li><li>How it imparts a regional character to climate change</li></ul>
+      <p class="small bottom"><b>From specialty to mainstream.</b> When first introduced ~70 years ago, general circulation courses were specialty courses; today they connect atmospheric dynamics with the other subdisciplines and elucidate the behavior of the global atmosphere as a system.</p>
+    </div>
+    <div class="card teal key wide">
+      <div class="card-head"><span class="icircle white"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 352 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M96.06 454.35c.01 6.29 1.87 12.45 5.36 17.69l17.09 25.69a31.99 31.99 0 0 0 26.64 14.28h61.71a31.99 31.99 0 0 0 26.64-14.28l17.09-25.69a31.989 31.989 0 0 0 5.36-17.69l.04-38.35H96.01l.05 38.35zM0 176c0 44.37 16.45 84.85 43.56 115.78 16.52 18.85 42.36 58.23 52.21 91.45.04.26.07.52.11.78h160.24c.04-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45C335.55 260.85 352 220.37 352 176 352 78.61 272.91-.3 175.45 0 73.44.31 0 82.97 0 176zm176-80c-44.11 0-80 35.89-80 80 0 8.84-7.16 16-16 16s-16-7.16-16-16c0-61.76 50.24-112 112-112 8.84 0 16 7.16 16 16s-7.16 16-16 16z"></path></svg></span><span>An analogy from physics</span></div>
+      <div class="card-body">
+        <p><b>General circulation&nbsp;:&nbsp;atmospheric science<br>≈&nbsp; Statistical mechanics&nbsp;:&nbsp;physics</b></p>
+        <p>Interpreting the macroscopic behavior of the global circulation in terms of the dynamics and statistical properties of <b class="teal">ensembles of waves and vortices</b> of which it is made up.</p>
+        <p><b>Synoptic meteorology</b> → the entities that shape and mediate day-to-day <b>weather</b><br>
+           <b>General circulation</b> → the entities that shape and mediate <b>climate</b></p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Intro · The Atmospheric General Circulation (Wallace, Battisti, Thompson &amp; Hartmann)</span><span>2</span></div>
+  <aside class="notes">Emphasize the 'statistical mechanics' analogy: we care about the statistics (means, variances, covariances) of an ensemble of waves and vortices, not any single storm. Contrast with synoptic meteorology.</aside>
+</section>
+
+<section class="light ">
+  <div class="motif"></div>
+  <div class="kicker">WHAT THE TERM CONNOTES</div>
+  <h2>Many kinds of weather systems on many space and time scales</h2>
+  
+  <p class="lead">The book's cover image is a single, typical frame from an animation — global in scope, ranging in scale from ~10 km to planetary. The circulation is rendered by the clouds it produces; the oceans, cryosphere, and terrestrial biosphere with which it interacts are also visible.</p>
+  <div class="scalebar">
+    <div class="axis"></div>
+    <div class="tick"><div class="lab">~10 km</div><div class="dot" style="width:22px;height:22px"></div><div class="sub">convective clouds,<br>microscale turbulence</div></div><div class="tick"><div class="lab">~100–1000 km</div><div class="dot" style="width:36px;height:36px"></div><div class="sub">cyclones, easterly waves,<br>fronts</div></div><div class="tick"><div class="lab">~1000–10,000 km</div><div class="dot" style="width:52px;height:52px"></div><div class="sub">jet streams, storm tracks,<br>stationary waves</div></div><div class="tick"><div class="lab">Planetary</div><div class="dot" style="width:72px;height:72px"></div><div class="sub">Hadley cell, ITCZ,<br>annular modes, MJO</div></div>
+    <div class="axis-lab">space scale →</div>
+  </div>
+  <div class="chips"><span class="chips-lab">Interacting with:</span>
+    <span class="chip"><span class="icircle white"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M562.1 383.9c-21.5-2.4-42.1-10.5-57.9-22.9-14.1-11.1-34.2-11.3-48.2 0-37.9 30.4-107.2 30.4-145.7-1.5-13.5-11.2-33-9.1-46.7 1.8-38 30.1-106.9 30-145.2-1.7-13.5-11.2-33.3-8.9-47.1 2-15.5 12.2-36 20.1-57.7 22.4-7.9.8-13.6 7.8-13.6 15.7v32.2c0 9.1 7.6 16.8 16.7 16 28.8-2.5 56.1-11.4 79.4-25.9 56.5 34.6 137 34.1 192 0 56.5 34.6 137 34.1 192 0 23.3 14.2 50.9 23.3 79.1 25.8 9.1.8 16.7-6.9 16.7-16v-31.6c.1-8-5.7-15.4-13.8-16.3zm0-144c-21.5-2.4-42.1-10.5-57.9-22.9-14.1-11.1-34.2-11.3-48.2 0-37.9 30.4-107.2 30.4-145.7-1.5-13.5-11.2-33-9.1-46.7 1.8-38 30.1-106.9 30-145.2-1.7-13.5-11.2-33.3-8.9-47.1 2-15.5 12.2-36 20.1-57.7 22.4-7.9.8-13.6 7.8-13.6 15.7v32.2c0 9.1 7.6 16.8 16.7 16 28.8-2.5 56.1-11.4 79.4-25.9 56.5 34.6 137 34.1 192 0 56.5 34.6 137 34.1 192 0 23.3 14.2 50.9 23.3 79.1 25.8 9.1.8 16.7-6.9 16.7-16v-31.6c.1-8-5.7-15.4-13.8-16.3zm0-144C540.6 93.4 520 85.4 504.2 73 490.1 61.9 470 61.7 456 73c-37.9 30.4-107.2 30.4-145.7-1.5-13.5-11.2-33-9.1-46.7 1.8-38 30.1-106.9 30-145.2-1.7-13.5-11.2-33.3-8.9-47.1 2-15.5 12.2-36 20.1-57.7 22.4-7.9.8-13.6 7.8-13.6 15.7v32.2c0 9.1 7.6 16.8 16.7 16 28.8-2.5 56.1-11.4 79.4-25.9 56.5 34.6 137 34.1 192 0 56.5 34.6 137 34.1 192 0 23.3 14.2 50.9 23.3 79.1 25.8 9.1.8 16.7-6.9 16.7-16v-31.6c.1-8-5.7-15.4-13.8-16.3z"></path></svg></span> Oceans</span>
+    <span class="chip"><span class="icircle white"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M440.3 345.2l-33.8-19.5 26-7c8.2-2.2 13.1-10.7 10.9-18.9l-4-14.9c-2.2-8.2-10.7-13.1-18.9-10.9l-70.8 19-63.9-37 63.8-36.9 70.8 19c8.2 2.2 16.7-2.7 18.9-10.9l4-14.9c2.2-8.2-2.7-16.7-10.9-18.9l-26-7 33.8-19.5c7.4-4.3 9.9-13.7 5.7-21.1L430.4 119c-4.3-7.4-13.7-9.9-21.1-5.7l-33.8 19.5 7-26c2.2-8.2-2.7-16.7-10.9-18.9l-14.9-4c-8.2-2.2-16.7 2.7-18.9 10.9l-19 70.8-62.8 36.2v-77.5l53.7-53.7c6.2-6.2 6.2-16.4 0-22.6l-11.3-11.3c-6.2-6.2-16.4-6.2-22.6 0L256 56.4V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v40.4l-19.7-19.7c-6.2-6.2-16.4-6.2-22.6 0L138.3 48c-6.3 6.2-6.3 16.4 0 22.6l53.7 53.7v77.5l-62.8-36.2-19-70.8c-2.2-8.2-10.7-13.1-18.9-10.9l-14.9 4c-8.2 2.2-13.1 10.7-10.9 18.9l7 26-33.8-19.5c-7.4-4.3-16.8-1.7-21.1 5.7L2.1 145.7c-4.3 7.4-1.7 16.8 5.7 21.1l33.8 19.5-26 7c-8.3 2.2-13.2 10.7-11 19l4 14.9c2.2 8.2 10.7 13.1 18.9 10.9l70.8-19 63.8 36.9-63.8 36.9-70.8-19c-8.2-2.2-16.7 2.7-18.9 10.9l-4 14.9c-2.2 8.2 2.7 16.7 10.9 18.9l26 7-33.8 19.6c-7.4 4.3-9.9 13.7-5.7 21.1l15.5 26.8c4.3 7.4 13.7 9.9 21.1 5.7l33.8-19.5-7 26c-2.2 8.2 2.7 16.7 10.9 18.9l14.9 4c8.2 2.2 16.7-2.7 18.9-10.9l19-70.8 62.8-36.2v77.5l-53.7 53.7c-6.3 6.2-6.3 16.4 0 22.6l11.3 11.3c6.2 6.2 16.4 6.2 22.6 0l19.7-19.7V496c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-40.4l19.7 19.7c6.2 6.2 16.4 6.2 22.6 0l11.3-11.3c6.2-6.2 6.2-16.4 0-22.6L256 387.7v-77.5l62.8 36.2 19 70.8c2.2 8.2 10.7 13.1 18.9 10.9l14.9-4c8.2-2.2 13.1-10.7 10.9-18.9l-7-26 33.8 19.5c7.4 4.3 16.8 1.7 21.1-5.7l15.5-26.8c4.3-7.3 1.8-16.8-5.6-21z"></path></svg></span> Cryosphere</span>
+    <span class="chip"><span class="icircle white"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M546.2 9.7c-5.6-12.5-21.6-13-28.3-1.2C486.9 62.4 431.4 96 368 96h-80C182 96 96 182 96 288c0 7 .8 13.7 1.5 20.5C161.3 262.8 253.4 224 384 224c8.8 0 16 7.2 16 16s-7.2 16-16 16C132.6 256 26 410.1 2.4 468c-6.6 16.3 1.2 34.9 17.5 41.6 16.4 6.8 35-1.1 41.8-17.3 1.5-3.6 20.9-47.9 71.9-90.6 32.4 43.9 94 85.8 174.9 77.2C465.5 467.5 576 326.7 576 154.3c0-50.2-10.8-102.2-29.8-144.6z"></path></svg></span> Biosphere</span>
+  </div>
+  <div class="foot"><span>Intro · The Atmospheric General Circulation (Wallace, Battisti, Thompson &amp; Hartmann)</span><span>3</span></div>
+  <aside class="notes">The scale examples in the bar are illustrative (drawn from the phenomena the book covers), not from the Preface itself. Key point from the Preface: 'general circulation' connotes many kinds of weather systems on many space and time scales.</aside>
+</section>
+
+<section class="light ">
+  <div class="motif"></div>
+  <div class="kicker">HOW THE BOOK CAME INTO BEING</div>
+  <h2>Sixty years of a course, distilled into a monograph</h2>
+  
+  <div class="timeline">
+    <div class="axis"></div>
+    <div class="node"><div class="yr">1962–66</div><div class="dot"></div><div class="txt">JMW a graduate student at MIT; Victor Starr's general circulation course</div></div><div class="node"><div class="yr">early 1970s</div><div class="dot"></div><div class="txt">JMW begins teaching the graduate course at Univ. of Washington, closely paralleling Starr's</div></div><div class="node"><div class="yr">1970s–80s</div><div class="dot"></div><div class="txt">New material: stratosphere (with James Holton); zonally varying extratropical circulation; wave–mean flow interaction breakthroughs</div></div><div class="node"><div class="yr">~10 years ago</div><div class="dot"></div><div class="txt">Chih-Pei Chang (Holton's early student) urges JMW to publish the notes as a monograph</div></div>
+  </div>
+  <div class="card mist strip">
+    <span class="icircle white"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 640 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M96 224c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm448 0c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm32 32h-64c-17.6 0-33.5 7.1-45.1 18.6 40.3 22.1 68.9 62 75.1 109.4h66c17.7 0 32-14.3 32-32v-32c0-35.3-28.7-64-64-64zm-256 0c61.9 0 112-50.1 112-112S381.9 32 320 32 208 82.1 208 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C179.6 288 128 339.6 128 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zm-223.7-13.4C161.5 263.1 145.6 256 128 256H64c-35.3 0-64 28.7-64 64v32c0 17.7 14.3 32 32 32h65.9c6.3-47.4 34.9-87.3 75.2-109.4z"></path></svg></span>
+    <div><b>It took a team.</b> Surveying the voluminous literature and organizing it into a coherent narrative with illustrations and a supporting mathematical framework required more than one author.<br>
+    <b class="teal">DSB</b> — orderly development of the governing equations with scaling considerations &nbsp;·&nbsp; <b class="teal">DWJT</b> — Chapters 8 and 2, graphics design &nbsp;·&nbsp; <b class="teal">DLH</b> — global maps and meridional cross sections; Section 2.4</div>
+  </div>
+  <div class="foot"><span>Intro · The Atmospheric General Circulation (Wallace, Battisti, Thompson &amp; Hartmann)</span><span>4</span></div>
+  <aside class="notes">JMW = John M. Wallace; DSB = David S. Battisti; DWJT = David W. J. Thompson; DLH = Dennis L. Hartmann. The book's aim from the start: summarize what the community has learned about the general circulation since the mid-20th century.</aside>
+</section>
+
+<section class="light ">
+  <div class="motif"></div>
+  <div class="kicker">THE SCOPE</div>
+  <h2>What this book is — and what it is not</h2>
+  
+  <p class="lead"><i>Summarizes the major advances of the past ~70 years and offers a brief history of how they came about — emphasizing the achievements of the broader community over individual contributions.</i></p>
+  <div class="grid3">
+    <div class="card mist"><div class="card-head"><span class="icircle white"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M542.22 32.05c-54.8 3.11-163.72 14.43-230.96 55.59-4.64 2.84-7.27 7.89-7.27 13.17v363.87c0 11.55 12.63 18.85 23.28 13.49 69.18-34.82 169.23-44.32 218.7-46.92 16.89-.89 30.02-14.43 30.02-30.66V62.75c.01-17.71-15.35-31.74-33.77-30.7zM264.73 87.64C197.5 46.48 88.58 35.17 33.78 32.05 15.36 31.01 0 45.04 0 62.75V400.6c0 16.24 13.13 29.78 30.02 30.66 49.49 2.6 149.59 12.11 218.77 46.95 10.62 5.35 23.21-1.94 23.21-13.46V100.63c0-5.29-2.62-10.14-7.27-12.99z"></path></svg></span><span>vs. early general circulation textbooks</span></div><ul class="sm"><li>Less focused on how the atmosphere fulfills the balance requirements (mass, angular momentum, energy)</li><li>A more holistic treatment of the underlying dynamics</li><li>Explains phenomena on a fundamental level, starting from the equations of motion</li></ul></div><div class="card mist"><div class="card-head"><span class="icircle white"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M225.38 233.37c-12.5 12.5-12.5 32.76 0 45.25 12.49 12.5 32.76 12.5 45.25 0 12.5-12.5 12.5-32.76 0-45.25-12.5-12.49-32.76-12.49-45.25 0zM248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm126.14 148.05L308.17 300.4a31.938 31.938 0 0 1-15.77 15.77l-144.34 65.97c-16.65 7.61-33.81-9.55-26.2-26.2l65.98-144.35a31.938 31.938 0 0 1 15.77-15.77l144.34-65.97c16.65-7.6 33.8 9.55 26.19 26.2z"></path></svg></span><span>vs. other dynamics textbooks</span></div><ul class="sm"><li>Oriented toward interpretation and explanation of phenomena, less toward applying general principles</li><li>For the visual learner: ~1000 panels of graphics, far exceeding the number of equations</li><li>Touches on a wide range of phenomena, many not found in other textbooks</li></ul></div><div class="card mist"><div class="card-head"><span class="icircle white"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm82.29 357.6c-3.9 3.88-7.99 7.95-11.31 11.28-2.99 3-5.1 6.7-6.17 10.71-1.51 5.66-2.73 11.38-4.77 16.87l-17.39 46.85c-13.76 3-28 4.69-42.65 4.69v-27.38c1.69-12.62-7.64-36.26-22.63-51.25-6-6-9.37-14.14-9.37-22.63v-32.01c0-11.64-6.27-22.34-16.46-27.97-14.37-7.95-34.81-19.06-48.81-26.11-11.48-5.78-22.1-13.14-31.65-21.75l-.8-.72a114.792 114.792 0 0 1-18.06-20.74c-9.38-13.77-24.66-36.42-34.59-51.14 20.47-45.5 57.36-82.04 103.2-101.89l24.01 12.01C203.48 89.74 216 82.01 216 70.11v-11.3c7.99-1.29 16.12-2.11 24.39-2.42l28.3 28.3c6.25 6.25 6.25 16.38 0 22.63L264 112l-10.34 10.34c-3.12 3.12-3.12 8.19 0 11.31l4.69 4.69c3.12 3.12 3.12 8.19 0 11.31l-8 8a8.008 8.008 0 0 1-5.66 2.34h-8.99c-2.08 0-4.08.81-5.58 2.27l-9.92 9.65a8.008 8.008 0 0 0-1.58 9.31l15.59 31.19c2.66 5.32-1.21 11.58-7.15 11.58h-5.64c-1.93 0-3.79-.7-5.24-1.96l-9.28-8.06a16.017 16.017 0 0 0-15.55-3.1l-31.17 10.39a11.95 11.95 0 0 0-8.17 11.34c0 4.53 2.56 8.66 6.61 10.69l11.08 5.54c9.41 4.71 19.79 7.16 30.31 7.16s22.59 27.29 32 32h66.75c8.49 0 16.62 3.37 22.63 9.37l13.69 13.69a30.503 30.503 0 0 1 8.93 21.57 46.536 46.536 0 0 1-13.72 32.98zM417 274.25c-5.79-1.45-10.84-5-14.15-9.97l-17.98-26.97a23.97 23.97 0 0 1 0-26.62l19.59-29.38c2.32-3.47 5.5-6.29 9.24-8.15l12.98-6.49C440.2 193.59 448 223.87 448 256c0 8.67-.74 17.16-1.82 25.54L417 274.25z"></path></svg></span><span>vs. climate dynamics &amp; planetary atmospheres</span></div><ul class="sm"><li>Focus on the general circulation as it exists today — not the distant past, nor multidecadal change</li><li>More focused on the circulation and on departures from the globally averaged temperature profile than on the profile itself</li></ul></div>
+  </div>
+  <div class="foot"><span>Intro · The Atmospheric General Circulation (Wallace, Battisti, Thompson &amp; Hartmann)</span><span>5</span></div>
+  <aside class="notes">Also from the Preface: only a small fraction of the thousands of relevant papers can be cited. Not a self-contained dynamics textbook, but it does start from the equations of motion.</aside>
+</section>
+
+<section class="light ">
+  <div class="motif"></div>
+  <div class="kicker">THE CONTENT</div>
+  <h2>Roadmap: six parts, 21 chapters, Appendices A–F</h2>
+  
+  <div class="grid3 roadmap">
+    <div class="pcard z"><div class="row"><span class="pn">Part I</span><span class="ch">Ch. 1–2</span></div><div class="pt">Introduction</div><div class="pd">Observing system, building blocks, thought experiments, heat engine</div></div><div class="pcard z"><div class="row"><span class="pn">Part II</span><span class="ch">Ch. 3–6</span></div><div class="pt">Balance requirements</div><div class="pd">Angular momentum, total &amp; mechanical energy, water vapor</div></div><div class="pcard z"><div class="row"><span class="pn">Part III</span><span class="ch">Ch. 7–8</span></div><div class="pt">Dynamics of the zonal mean flow</div><div class="pd">Axisymmetric vortex, wave–mean flow interaction, TEM</div></div><div class="pcard z"><div class="row"><span class="pn">Part IV</span><span class="ch">Ch. 9–10</span></div><div class="pt">Stratospheric general circulation</div><div class="pd">Brewer–Dobson, sudden warmings, QBO, equatorial waves</div></div><div class="pcard v"><div class="row"><span class="pn">Part V</span><span class="ch">Ch. 11–13</span></div><div class="pt">Zonally varying extratropical circulation</div><div class="pd">Jet streams, stationary waves, transients (NH winter)</div></div><div class="pcard v"><div class="row"><span class="pn">Part VI</span><span class="ch">Ch. 14–21</span></div><div class="pt">Zonally varying tropical circulation</div><div class="pd">ITCZ, convection, annual cycle, ENSO, MJO, waves, TCs, tides</div></div>
+  </div>
+  <div class="legend"><span><i class="sw z"></i>Zonally averaged — the atmosphere treated as if Earth were an aquaplanet</span><span><i class="sw v"></i>Zonally varying — longitudinal structure of climate and variability</span></div>
+  <div class="foot"><span>Intro · The Atmospheric General Circulation (Wallace, Battisti, Thompson &amp; Hartmann)</span><span>6</span></div>
+  <aside class="notes">Each part = sequentially ordered chapters with numbered sections; many sections followed by exercises. Main text followed by Appendices, bibliography, index; companion web page with supplementary figures, Solutions Manual, animations. Note the shift at Part V: up to Part IV, everything is framed in zonally averaged means, variances and covariances.</aside>
+</section>
+
+<section class="light ">
+  <div class="motif"></div>
+  <div class="kicker">PART I &nbsp;·&nbsp; CHAPTERS 1–2</div>
+  <h2>Introduction: the building blocks and an intuitive feel for the dynamics</h2>
+  
+  <div class="cols part">
+    <div class="col-main"><h3>Chapter 1 — Observations and building blocks</h3><ul class=""><li>Development of the observing system from the mid-20th century onward</li><li>A “mini-atlas”: jet streams, Hadley cell, storm tracks, intertropical convergence zones, …</li><li>Simplified equation sets via the hydrostatic and geostrophic approximations</li><li>A brief history of general circulation modeling</li></ul><h3>Chapter 2 — Thought experiments and simulations</h3><ul class=""><li>Roles of differential heating, frictional dissipation, and gravity waves in the development, maintenance, and “spin-down” of the circulation</li><li>The role of rotation in shaping the circulation</li><li>The general circulation as a thermodynamic cycle of reversible processes — a heat engine</li></ul></div>
+    <div class="card teal key">
+      <div class="card-head"><span class="icircle white"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12.41 148.02l232.94 105.67c6.8 3.09 14.49 3.09 21.29 0l232.94-105.67c16.55-7.51 16.55-32.52 0-40.03L266.65 2.31a25.607 25.607 0 0 0-21.29 0L12.41 107.98c-16.55 7.51-16.55 32.53 0 40.04zm487.18 88.28l-58.09-26.33-161.64 73.27c-7.56 3.43-15.59 5.17-23.86 5.17s-16.29-1.74-23.86-5.17L70.51 209.97l-58.1 26.33c-16.55 7.5-16.55 32.5 0 40l232.94 105.59c6.8 3.08 14.49 3.08 21.29 0L499.59 276.3c16.55-7.5 16.55-32.5 0-40zm0 127.8l-57.87-26.23-161.86 73.37c-7.56 3.43-15.59 5.17-23.86 5.17s-16.29-1.74-23.86-5.17L70.29 337.87 12.41 364.1c-16.55 7.5-16.55 32.5 0 40l232.94 105.59c6.8 3.08 14.49 3.08 21.29 0L499.59 404.1c16.55-7.5 16.55-32.5 0-40z"></path></svg></span><span>Appendix A</span></div>
+      <div class="card-body"><p>The formalism for decomposing the flow:</p><p><b>time mean + transients<br>zonal mean + eddies (waves)</b></p><p>These decompositions underlie every part of the book — and the analyses you will do yourselves in this course.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>Intro · The Atmospheric General Circulation (Wallace, Battisti, Thompson &amp; Hartmann)</span><span>7</span></div>
+  <aside class="notes">Next lecture starts here (Chapter 1). Chapter 2 is meant to give intuition before the math in Parts II–III.</aside>
+</section>
+
+<section class="light ">
+  <div class="motif"></div>
+  <div class="kicker">PART II &nbsp;·&nbsp; CHAPTERS 3–6</div>
+  <h2>Balance requirements: Starr's MIT course, seen with today's observations</h2>
+  
+  <div class="cols part">
+    <div class="col-main"><h3>Four conservation constraints</h3><ul class=""><li>Ch. 3 angular momentum &nbsp;·&nbsp; Ch. 4 total energy &nbsp;·&nbsp; Ch. 5 mechanical (kinetic + potential) energy &nbsp;·&nbsp; Ch. 6 water vapor</li><li>Easier to cover now: no extensive error analysis or elaborate justifications for neglecting small terms</li></ul><h3>Observations Starr could only dream of</h3><ul class=""><li>Precise length-of-day and top-of-atmosphere net radiation measurements</li><li>Reliable geographical distributions of precipitation and surface energy fluxes</li><li>Global satellite fields of water vapor and a host of other trace substances</li></ul><h3>Decomposition of the horizontal wind field</h3><ul class=""><li>Axially symmetric part: zonally averaged zonal wind + mean meridional circulations</li><li>Eddy (wave) part: departure from the zonal mean — transports mass, zonal momentum, and energy meridionally, like down-gradient eddy diffusion</li></ul></div>
+    <div class="card teal key">
+      <div class="card-head"><span class="icircle white"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 640 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 336h-.02c0-16.18 1.34-8.73-85.05-181.51-17.65-35.29-68.19-35.36-85.87 0C-2.06 328.75.02 320.33.02 336H0c0 44.18 57.31 80 128 80s128-35.82 128-80zM128 176l72 144H56l72-144zm511.98 160c0-16.18 1.34-8.73-85.05-181.51-17.65-35.29-68.19-35.36-85.87 0-87.12 174.26-85.04 165.84-85.04 181.51H384c0 44.18 57.31 80 128 80s128-35.82 128-80h-.02zM440 320l72-144 72 144H440zm88 128H352V153.25c23.51-10.29 41.16-31.48 46.39-57.25H528c8.84 0 16-7.16 16-16V48c0-8.84-7.16-16-16-16H383.64C369.04 12.68 346.09 0 320 0s-49.04 12.68-63.64 32H112c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h129.61c5.23 25.76 22.87 46.96 46.39 57.25V448H112c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h416c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16z"></path></svg></span><span>Eddy transports</span></div>
+      <div class="card-body"><p>Represented by zonally and time-averaged <b>covariance terms</b> (e.g. [u*v*], [v′T′]) that appear in the conservation equations.</p><p><i>Derived in Appendices A and B.</i></p></div>
+    </div>
+  </div>
+  <div class="foot"><span>Intro · The Atmospheric General Circulation (Wallace, Battisti, Thompson &amp; Hartmann)</span><span>8</span></div>
+  <aside class="notes">Balance requirement approach: what must the transports be for angular momentum, energy and water to be conserved? Starr's framework, now with modern data.</aside>
+</section>
+
+<section class="light ">
+  <div class="motif"></div>
+  <div class="kicker">PART III &nbsp;·&nbsp; CHAPTERS 7–8</div>
+  <h2>Dynamics of the zonal mean flow: beyond the balance requirements</h2>
+  
+  <div class="cols part">
+    <div class="col-main"><h3>Chapter 7 — The zonally symmetric flow</h3><ul class=""><li>Transcends the balance-requirement approach, in which angular momentum and energy are self-contained topics</li><li>Treats the general circulation holistically via the equations governing the zonally symmetric flow</li><li>Rooted in Eliassen (1951) on the axisymmetric vortex — the topic Charney taught in his MIT Planetary Circulations course; presented here in simplified form</li></ul><h3>Chapter 8 — Wave–mean flow interaction</h3><ul class=""><li>Charney lamented that he did not know how to represent eddy transports once waves reach finite amplitude</li><li>Late 1970s: the transformed Eulerian mean (TEM) formalism — not just “what maintains the trade winds and westerlies?” but why they exist</li><li>Nonlinear life cycle of baroclinic waves in a primitive-equation model as a concrete illustration of two-way interaction</li><li>Brief look at the annular modes</li></ul></div>
+    <div class="card teal key">
+      <div class="card-head"><span class="icircle white"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M370.72 133.28C339.458 104.008 298.888 87.962 255.848 88c-77.458.068-144.328 53.178-162.791 126.85-1.344 5.363-6.122 9.15-11.651 9.15H24.103c-7.498 0-13.194-6.807-11.807-14.176C33.933 94.924 134.813 8 256 8c66.448 0 126.791 26.136 171.315 68.685L463.03 40.97C478.149 25.851 504 36.559 504 57.941V192c0 13.255-10.745 24-24 24H345.941c-21.382 0-32.09-25.851-16.971-40.971l41.75-41.749zM32 296h134.059c21.382 0 32.09 25.851 16.971 40.971l-41.75 41.75c31.262 29.273 71.835 45.319 114.876 45.28 77.418-.07 144.315-53.144 162.787-126.849 1.344-5.363 6.122-9.15 11.651-9.15h57.304c7.498 0 13.194 6.807 11.807 14.176C478.067 417.076 377.187 504 256 504c-66.448 0-126.791-26.136-171.315-68.685L48.97 471.03C33.851 486.149 8 475.441 8 454.059V320c0-13.255 10.745-24 24-24z"></path></svg></span><span>Conceptually more advanced</span></div>
+      <div class="card-body"><p>Requires more mathematical manipulation than Part II.</p><p>The payoff: an explanation of the two-way wave–mean flow interaction that had previously eluded general circulation theorists.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>Intro · The Atmospheric General Circulation (Wallace, Battisti, Thompson &amp; Hartmann)</span><span>9</span></div>
+  <aside class="notes">TEM = transformed Eulerian mean (Andrews & McIntyre 1976; Edmon et al. 1980). This is where the course moves from 'bookkeeping' to dynamics.</aside>
+</section>
+
+<section class="light ">
+  <div class="motif"></div>
+  <div class="kicker">PART IV &nbsp;·&nbsp; CHAPTERS 9–10</div>
+  <h2>The stratospheric general circulation</h2>
+  
+  <div class="cols part">
+    <div class="col-main"><h3>Chapter 9 — Extratropical stratosphere</h3><ul class=""><li>The global, time-varying Brewer–Dobson circulation</li><li>Stratosphere–troposphere exchange</li><li>Planetary waves in the winter stratosphere; sudden warmings</li><li>Common thread: breaking of Rossby waves dispersing upward from below lets air parcels flow poleward under the constraint of angular momentum conservation</li></ul><h3>Chapter 10 — Tropical stratosphere</h3><ul class=""><li>The quasi-biennial oscillation (QBO) in zonally averaged zonal wind, driven by breaking inertio-gravity waves dispersing upward from directly below</li><li>The family of equatorially trapped planetary waves and the linear shallow-water theory that accounts for them</li><li>Two-sided wavenumber–frequency spectra vs. theoretical dispersion curves</li></ul></div>
+    <div class="card teal key">
+      <div class="card-head"><span class="icircle white"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M156.7 256H16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h142.2c15.9 0 30.8 10.9 33.4 26.6 3.3 20-12.1 37.4-31.6 37.4-14.1 0-26.1-9.2-30.4-21.9-2.1-6.3-8.6-10.1-15.2-10.1H81.6c-9.8 0-17.7 8.8-15.9 18.4 8.6 44.1 47.6 77.6 94.2 77.6 57.1 0 102.7-50.1 95.2-108.6C249 291 205.4 256 156.7 256zM16 224h336c59.7 0 106.8-54.8 93.8-116.7-7.6-36.2-36.9-65.5-73.1-73.1-55.4-11.6-105.1 24.9-114.9 75.5-1.9 9.6 6.1 18.3 15.8 18.3h32.8c6.7 0 13.1-3.8 15.2-10.1C325.9 105.2 337.9 96 352 96c19.4 0 34.9 17.4 31.6 37.4-2.6 15.7-17.4 26.6-33.4 26.6H16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16zm384 32H243.7c19.3 16.6 33.2 38.8 39.8 64H400c26.5 0 48 21.5 48 48s-21.5 48-48 48c-17.9 0-33.3-9.9-41.6-24.4-2.9-5-8.7-7.6-14.5-7.6h-33.8c-10.9 0-19 10.8-15.3 21.1 17.8 50.6 70.5 84.8 129.4 72.3 41.2-8.7 75.1-41.6 84.7-82.7C526 321.5 470.5 256 400 256z"></path></svg></span><span>Linear theory meets data</span></div>
+      <div class="card-body"><p>The comparison of observed wavenumber–frequency spectra with theoretically derived dispersion curves is a graphic example of how <b>linear theory can be of use in interpreting observations</b>.</p><p><i>Wave breaking is the recurring mechanism in both chapters.</i></p></div>
+    </div>
+  </div>
+  <div class="foot"><span>Intro · The Atmospheric General Circulation (Wallace, Battisti, Thompson &amp; Hartmann)</span><span>10</span></div>
+  <aside class="notes">Still framed entirely in zonally averaged quantities. Equatorial wave theory (Matsuno 1966) reappears in Part VI for the troposphere.</aside>
+</section>
+
+<section class="light ">
+  <div class="motif"></div>
+  <div class="kicker">PART V &nbsp;·&nbsp; CHAPTERS 11–13</div>
+  <h2>The zonally varying extratropical circulation</h2>
+  
+  <div class="cols part">
+    <div class="col-main"><h3>A change of viewpoint</h3><ul class=""><li>Up to Part IV the atmosphere is treated as if Earth were an aquaplanet — no significant longitudinal variations in climate</li><li>Coverage limited, for brevity, to the Northern Hemisphere wintertime circulation</li></ul><h3>Chapter 11 — Zonally varying time-mean climate</h3><ul class=""><li>Jet streams, stationary waves, subpolar lows, and subtropical highs</li><li>Numerical experiments with a state-of-the-art GCM isolate the roles of orography, zonally varying diabatic heating, and tropical forcing</li><li>Including nonlinear interactions with the zonally averaged zonal wind</li></ul><h3>Chapters 12–13 — Zonally varying transients</h3><ul class=""><li>Ch. 12: periods shorter than ~1 week &nbsp;·&nbsp; Ch. 13: periods longer than ~1 week</li><li>Defined on the basis of time-filtered data</li></ul></div>
+    <div class="card teal key">
+      <div class="card-head"><span class="icircle white"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M416 320h-96c-17.6 0-32-14.4-32-32s14.4-32 32-32h96s96-107 96-160-43-96-96-96-96 43-96 96c0 25.5 22.2 63.4 45.3 96H320c-52.9 0-96 43.1-96 96s43.1 96 96 96h96c17.6 0 32 14.4 32 32s-14.4 32-32 32H185.5c-16 24.8-33.8 47.7-47.3 64H416c52.9 0 96-43.1 96-96s-43.1-96-96-96zm0-256c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zM96 256c-53 0-96 43-96 96s96 160 96 160 96-107 96-160-43-96-96-96zm0 128c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"></path></svg></span><span>Why it matters</span></div>
+      <div class="card-body"><p>Longitudinal structure is what gives climate its regional character — and a zonal mean alone cannot describe it.</p><p><i>The tools: time-mean vs. transient decomposition and time filtering (Appendix A, C).</i></p></div>
+    </div>
+  </div>
+  <div class="foot"><span>Intro · The Atmospheric General Circulation (Wallace, Battisti, Thompson &amp; Hartmann)</span><span>11</span></div>
+  <aside class="notes">Time-filtering splits transients into synoptic (< ~1 week: baroclinic waves, storm tracks) and low-frequency (> ~1 week: teleconnections, blocking).</aside>
+</section>
+
+<section class="light ">
+  <div class="motif"></div>
+  <div class="kicker">PART VI &nbsp;·&nbsp; CHAPTERS 14–21</div>
+  <h2>The zonally varying tropical circulation, with emphasis on the troposphere</h2>
+  
+  <div class="cols part">
+    <div class="col-main"><h3>Year-round structure and energetics</h3><ul class=""><li>Ch. 14: Intertropical Convergence Zones and the equatorial dry zones</li><li>Ch. 15: deep convection in the tropical energy balance — organized more by moisture gradients than by temperature and potential vorticity gradients</li></ul><h3>Low-frequency, planetary-scale variability</h3><ul class=""><li>Ch. 16 climatological mean annual cycle &nbsp;·&nbsp; Ch. 17 ENSO &nbsp;·&nbsp; Ch. 18 Madden–Julian oscillation</li></ul><h3>Higher-frequency and regional phenomena</h3><ul class=""><li>Ch. 19: equatorially trapped waves, easterly waves, midlatitude baroclinic waves dispersing into the tropics at upper levels</li><li>Ch. 20: warm-core tropical vortices, including intense tropical cyclones</li><li>Ch. 21: inertio-gravity waves with periods &lt; 1 day, atmospheric tides, diurnal variations in tropical rainfall</li></ul></div>
+    <div class="card teal key">
+      <div class="card-head"><span class="icircle white"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 160c-52.9 0-96 43.1-96 96s43.1 96 96 96 96-43.1 96-96-43.1-96-96-96zm246.4 80.5l-94.7-47.3 33.5-100.4c4.5-13.6-8.4-26.5-21.9-21.9l-100.4 33.5-47.4-94.8c-6.4-12.8-24.6-12.8-31 0l-47.3 94.7L92.7 70.8c-13.6-4.5-26.5 8.4-21.9 21.9l33.5 100.4-94.7 47.4c-12.8 6.4-12.8 24.6 0 31l94.7 47.3-33.5 100.5c-4.5 13.6 8.4 26.5 21.9 21.9l100.4-33.5 47.3 94.7c6.4 12.8 24.6 12.8 31 0l47.3-94.7 100.4 33.5c13.6 4.5 26.5-8.4 21.9-21.9l-33.5-100.4 94.7-47.3c13-6.5 13-24.7.2-31.1zm-155.9 106c-49.9 49.9-131.1 49.9-181 0-49.9-49.9-49.9-131.1 0-181 49.9-49.9 131.1-49.9 181 0 49.9 49.9 49.9 131.1 0 181z"></path></svg></span><span>Documenting and interpreting</span></div>
+      <div class="card-body"><p>Each chapter documents the observed structure or variability, then interprets it — from the year-round ITCZ to sub-daily tides.</p><p><i>Chapter 21 ties together the sections on sub-daily inertio-gravity waves scattered through the book.</i></p></div>
+    </div>
+  </div>
+  <div class="foot"><span>Intro · The Atmospheric General Circulation (Wallace, Battisti, Thompson &amp; Hartmann)</span><span>12</span></div>
+  <aside class="notes">Part VI is closest to our group's research (MJO, equatorial waves, ENSO). Ch. 15's point about moisture gradients vs. temperature/PV gradients is a central theme.</aside>
+</section>
+
+<section class="light ">
+  <div class="motif"></div>
+  <div class="kicker">USING THE BOOK — AND THIS COURSE</div>
+  <h2>Figures, exercises, online tools, and data</h2>
+  
+  <div class="grid2 use">
+    <div class="use-item"><span class="icircle teal"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M480 416v16c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V176c0-26.51 21.49-48 48-48h16v208c0 44.112 35.888 80 80 80h336zm96-80V80c0-26.51-21.49-48-48-48H144c-26.51 0-48 21.49-48 48v256c0 26.51 21.49 48 48 48h384c26.51 0 48-21.49 48-48zM256 128c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-96 144l55.515-55.515c4.686-4.686 12.284-4.686 16.971 0L272 256l135.515-135.515c4.686-4.686 12.284-4.686 16.971 0L512 208v112H160v-48z"></path></svg></span><div><div class="ut">Figures</div><div class="ub">Most numbered figures carry titles; captions emphasize what is shown rather than how it was produced. Data sources and methods are in Appendix F; dataset URLs on the companion web page.</div></div></div><div class="use-item"><span class="icircle teal"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"></path></svg></span><div><div class="ut">Exercises</div><div class="ub">Follow most sections. Some have well-defined answers; those marked with an asterisk (*) are open-ended — proposed topics for class discussion, projects, or term papers.</div></div></div><div class="use-item"><span class="icircle teal"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M501.1 395.7L384 278.6c-23.1-23.1-57.6-27.6-85.4-13.9L192 158.1V96L64 0 0 64l96 128h62.1l106.6 106.6c-13.6 27.8-9.2 62.3 13.9 85.4l117.1 117.1c14.6 14.6 38.2 14.6 52.7 0l52.7-52.7c14.5-14.6 14.5-38.2 0-52.7zM331.7 225c28.3 0 54.9 11 74.9 31l19.4 19.4c15.8-6.9 30.8-16.5 43.8-29.5 37.1-37.1 49.7-89.3 37.9-136.7-2.2-9-13.5-12.1-20.1-5.5l-74.4 74.4-67.9-11.3L334 98.9l74.4-74.4c6.6-6.6 3.4-17.9-5.7-20.2-47.4-11.7-99.6.9-136.6 37.9-28.5 28.5-41.9 66.1-41.2 103.6l82.1 82.1c8.1-1.9 16.5-2.9 24.7-2.9zm-103.9 82l-56.7-56.7L18.7 402.8c-25 25-25 65.5 0 90.5s65.5 25 90.5 0l123.6-123.6c-7.6-19.9-9.9-41.6-5-62.7zM64 472c-13.2 0-24-10.8-24-24 0-13.3 10.7-24 24-24s24 10.7 24 24c0 13.2-10.7 24-24 24z"></path></svg></span><div><div class="ut">Solutions Manual &amp; online tools</div><div class="ub">Introduces online tools to access gridded atmospheric and oceanic fields, display them, and perform analyses — time and zonal averaging, compositing, EOF analysis.</div></div></div><div class="use-item"><span class="icircle teal"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M448 73.143v45.714C448 159.143 347.667 192 224 192S0 159.143 0 118.857V73.143C0 32.857 100.333 0 224 0s224 32.857 224 73.143zM448 176v102.857C448 319.143 347.667 352 224 352S0 319.143 0 278.857V176c48.125 33.143 136.208 48.572 224 48.572S399.874 209.143 448 176zm0 160v102.857C448 479.143 347.667 512 224 512S0 479.143 0 438.857V336c48.125 33.143 136.208 48.572 224 48.572S399.874 369.143 448 336z"></path></svg></span><div><div class="ut">Data behind the figures</div><div class="ub">Mostly ERA-Interim (discontinued 2019); gravity-wave and many Part VI figures use ERA5. Unless noted, ERA-Interim figures are not appreciably different from ERA5 counterparts.</div></div></div>
+  </div>
+  <div class="grid2 bottom-cards">
+    <div class="card mist strip sm"><div><b>Appendices</b>&nbsp; A, C analysis techniques · B, D derivations · E notation &amp; terminology · F data and methods for the figures. Online: high-resolution PDFs, extended mini-atlas, animations library.</div></div>
+    <div class="card sand strip sm"><span class="icircle white"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></span><div><b>In this course</b>&nbsp; we will follow the book's “hands-on” spirit: analysis code for reproducing and exploring what we learn each week will be shared through the course GitHub page.</div></div>
+  </div>
+  <div class="foot"><span>Intro · The Atmospheric General Circulation (Wallace, Battisti, Thompson &amp; Hartmann)</span><span>13</span></div>
+  <aside class="notes">The Preface's suggestion that instructors assign hands-on exercises using online gridded data is exactly what the course GitHub page is for. Mention where the repository link will be posted.</aside>
+</section>
+
+<section class="light ">
+  <div class="motif"></div>
+  <div class="kicker">THE COMMUNITY</div>
+  <h2>A research community dating back to the late 1940s</h2>
+  
+  <h3>Pioneers (late 1940s–)</h3>
+  <div class="names"><span class="name">Carl-Gustaf Rossby</span><span class="name">Victor Starr</span><span class="name">Jule Charney</span><span class="name">Eric Eady</span><span class="name">Edward Lorenz</span><span class="name">Arnt Eliassen</span><span class="name">Alan Brewer</span></div>
+  <h3>Arriving in the 1960s</h3>
+  <div class="names"><span class="name">Syukuro Manabe</span><span class="name">Taroh Matsuno</span><span class="name">James Holton</span></div>
+  <p class="small"><i>In the early years the field was populated by their former students and postdocs, many of whom made important contributions in their own right.</i></p>
+  <div class="card mist strip">
+    <span class="icircle white"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 640 512" class="ic " height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M96 224c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm448 0c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm32 32h-64c-17.6 0-33.5 7.1-45.1 18.6 40.3 22.1 68.9 62 75.1 109.4h66c17.7 0 32-14.3 32-32v-32c0-35.3-28.7-64-64-64zm-256 0c61.9 0 112-50.1 112-112S381.9 32 320 32 208 82.1 208 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C179.6 288 128 339.6 128 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zm-223.7-13.4C161.5 263.1 145.6 256 128 256H64c-35.3 0-64 28.7-64 64v32c0 17.7 14.3 32 32 32h65.9c6.3-47.4 34.9-87.3 75.2-109.4z"></path></svg></span>
+    <div><b>A community still growing — and still changing.</b> Progressively more diverse in nationalities and institutions; in recent years many more women hold faculty and research positions. Sustained efforts are needed to attract more minorities into the geosciences: better K–12 STEM education alone is not enough — students need role models who convince them, from their early years, that they can enjoy and master science and math. Some current students contribute through departmental outreach to K–12 schools.</div>
+  </div>
+  <div class="foot"><span>Intro · The Atmospheric General Circulation (Wallace, Battisti, Thompson &amp; Hartmann)</span><span>14</span></div>
+  <aside class="notes">Many of these names will recur as we go: Rossby waves, Eady model, Charney problem, Lorenz energy cycle, Eliassen (1951) axisymmetric vortex, Brewer–Dobson circulation, Manabe's GCMs, Matsuno's equatorial waves, Holton's stratospheric dynamics.</aside>
+</section>
+
+<section class="dark">
+  <div class="motif"></div><div class="motif-bl"></div>
+  
+  <div class="title-block ahead">
+    <div class="kicker amber">LOOKING AHEAD</div>
+    <h1 class="h1-sm">Three questions to keep in mind all semester</h1>
+    <ol class="qs">
+      <li><span class="num">1</span>What are the “building blocks” of the general circulation, and what do their statistics (means, variances, covariances) look like?</li>
+      <li><span class="num">2</span>What balance requirements must the circulation satisfy, and which eddy transports fulfill them?</li>
+      <li><span class="num">3</span>Why do these features exist at all — how do waves and the mean flow shape one another?</li>
+    </ol>
+    <div class="card next"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="ic amber" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg><div><b class="amber">Next lecture — Chapter 1.</b> The observing system since the mid-20th century, the “mini-atlas” of building blocks, and the time-mean / zonal-mean decomposition of Appendix A.</div></div>
+  </div>
+  <aside class="notes">These three questions map onto Parts I, II and III respectively; Parts IV–VI then apply the same way of thinking to the stratosphere, the zonally varying extratropics, and the tropics.</aside>
+</section>
+</div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/notes/notes.min.js"></script>
+<script>
+Reveal.initialize({
+  width: 960, height: 540, margin: 0, minScale: 0.2, maxScale: 2.5,
+  hash: true, slideNumber: false, controls: false, transition: "fade", center: false,
+  plugins: [ RevealNotes ]
+});
+</script>
+</body>
+</html>
