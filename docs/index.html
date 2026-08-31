@@ -49,8 +49,8 @@ footer{border-top:1px solid var(--teal-lt);padding:20px 0 40px;font-size:13px;co
   <div class="wrap">
     <div class="kicker">Graduate course · Fall 2026 · Seoul National University</div>
     <h1>Atmospheric General Circulation</h1>
-    <p>Lecture slides and hands-on analysis notebooks for the course, following <i>The Atmospheric General Circulation</i> by Wallace, Battisti, Thompson &amp; Hartmann (Cambridge University Press).</p>
-    <div class="meta"><b>Instructor:</b> [your name] &nbsp;·&nbsp; <b>Repository:</b> <a href="https://github.com/cstdl-atmos-snu/atmospheric-general-circulation" style="color:#CADCFC">github.com/cstdl-atmos-snu/atmospheric-general-circulation</a></div>
+    <p>Lecture slides for the course, following <i>The Atmospheric General Circulation</i> by Wallace, Battisti, Thompson &amp; Hartmann (Cambridge University Press).</p>
+    <div class="meta"><b>Instructor:</b> Prof. Daehyun Kim &nbsp;·&nbsp; <b>Repository:</b> <a href="https://github.com/cstdl-atmos-snu/atmospheric-general-circulation" style="color:#CADCFC">github.com/cstdl-atmos-snu/atmospheric-general-circulation</a></div>
   </div>
 </header>
 
@@ -60,14 +60,6 @@ footer{border-top:1px solid var(--teal-lt);padding:20px 0 40px;font-size:13px;co
     <div class="card teal">
       <h3>Slides</h3>
       <p>Each lecture's slides open in the browser (reveal.js). Use <b>→ / ←</b> or <b>Space</b> to move, <b>F</b> for full screen, <b>Esc</b> for an overview, <b>?</b> for all shortcuts. Decks marked 🔒 ask for the class password (given in Lecture 1).</p>
-    </div>
-    <div class="card">
-      <h3>Notebooks</h3>
-      <p>Jupyter notebooks let you reproduce and explore what we discuss in class. Click <b>Open in Colab</b> to run one in your browser with nothing to install, or run them locally (see below).</p>
-    </div>
-    <div class="card sand">
-      <h3>Exercises</h3>
-      <p>Most notebooks end with a few open-ended questions in the spirit of the textbook's asterisked exercises. Bring your results and questions to the next class.</p>
     </div>
   </div>
 
@@ -83,24 +75,16 @@ footer{border-top:1px solid var(--teal-lt);padding:20px 0 40px;font-size:13px;co
       <tr>
         <td class="wk">1</td>
         <td>Atmospheric observations and models: the observing system, imagery, tracers, and the observed circulation<br><span class="ch">Chapter 1, §1.1–1.4.1 · Appendix A</span></td>
-        <td><a class="pill" href="slides/01-observations-and-models.html">Slides 🔒</a> <a class="pill" href="https://colab.research.google.com/github/cstdl-atmos-snu/atmospheric-general-circulation/blob/main/notebooks/01-zonal-mean-climatology.ipynb">Notebook 01 · Open in Colab</a></td>
+        <td><a class="pill" href="slides/01-observations-and-models.html">Slides 🔒</a></td>
       </tr>
       <tr>
         <td class="wk">2</td>
-        <td>Thought experiments: heating, friction, rotation, and the heat engine<br><span class="ch">Chapter 2</span></td>
+        <td>Heuristic models of the general circulation<br><span class="ch">Chapter 2</span></td>
         <td><span class="pill soon">Slides (coming)</span></td>
       </tr>
     </tbody>
   </table>
 
-  <h2>Running the notebooks on your own computer</h2>
-  <p>If you prefer a local setup, install <a href="https://github.com/conda-forge/miniforge">Miniforge</a> and create the course environment once:</p>
-<pre>git clone https://github.com/cstdl-atmos-snu/atmospheric-general-circulation.git
-cd atmospheric-general-circulation
-conda env create -f environment.yml
-conda activate agc
-jupyter lab</pre>
-  <p>The notebooks read reanalysis data directly from public servers (NOAA PSL OPeNDAP), so no data download is needed for the early weeks.</p>
 </main>
 
 <footer class="wrap">
